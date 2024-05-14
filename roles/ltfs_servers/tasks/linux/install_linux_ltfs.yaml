@@ -3,6 +3,7 @@
   ansible.builtin.package:
     name:
       - icu
+      - libicu-devel
       - fuse-devel
       - libxml2-devel
       - libuuid-devel
@@ -10,8 +11,54 @@
       - automake
       - libtool
       - autoconf
+      - python3-pyxattr # for ltfsee_ordered_copy
     state: latest
 
-# TODO clone repo and build
+- name: Clone github.com/LinearTapeFileSystem/ltfs
+  ansible.builtin.git:
+    repo: 'https://github.com/LinearTapeFileSystem/ltfs.git'
+    dest: "{{ansible_env.HOME}}/ltfs"
+    version: f36304e66f06f53281fadbcebc35615b0419b3f0 # Nov 27, 2023
+
+- name: ./autogen.sh
+  ansible.builtin.command:
+    argv:
+      - ./autogen.sh
+    creates: "{{ansible_env.HOME}}/ltfs/configure"
+    chdir: "{{ansible_env.HOME}}/ltfs"
+
+- name: ./configure
+  ansible.builtin.command:
+    argv:
+      - ./configure
+    creates:
+      - "{{ansible_env.HOME}}/ltfs/config.h"
+      - "{{ansible_env.HOME}}/ltfs/config.log"
+      - "{{ansible_env.HOME}}/ltfs/config.status"
+      - "{{ansible_env.HOME}}/ltfs/libtool"
+      - "{{ansible_env.HOME}}/ltfs/ltfs.pc"
+      - "{{ansible_env.HOME}}/ltfs/Makefile"
+      - "{{ansible_env.HOME}}/ltfs/stamp-h1"
+    chdir: "{{ansible_env.HOME}}/ltfs"
+
+# https://github.com/LinearTapeFileSystem/ltfs/issues/394#issuecomment-2082624342
+- name: Patching Makefile
+  ansible.builtin.command:
+    chdir: "{{ansible_env.HOME}}/ltfs"
+    cmd: "sed -i 's/,-Wp/ -Wp/g' src/libltfs/Makefile ./conf/Makefile ./init.d/Makefile ./man/Makefile ./messages/Makefile ./src/iosched/Makefile ./src/kmi/Makefile ./src/libltfs/Makefile ./src/tape_drivers/freebsd/cam/Makefile ./src/tape_drivers/generic/file/Makefile ./src/tape_drivers/generic/itdtimg/Makefile ./src/tape_drivers/linux/lin_tape/Makefile ./src/tape_drivers/linux/sg/Makefile ./src/tape_drivers/netbsd/scsipi-ibmtape/Makefile ./src/tape_drivers/osx/iokit/Makefile ./src/utils/Makefile ./src/Makefile ./Makefile"
+
+- name: make
+  ansible.builtin.command:
+    argv:
+      - make
+    chdir: "{{ansible_env.HOME}}/ltfs"
+
+- name: make install
+  ansible.builtin.command:
+    argv:
+      - make
+      - install
+    chdir: "{{ansible_env.HOME}}/ltfs"
+
 # TODO make mount/unmount shell scripts
 # TODO add to mtab or fstab?

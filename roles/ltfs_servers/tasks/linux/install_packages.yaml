@@ -5,5 +5,5 @@
       - mt-st
       - mtx # tape library control
       - lsscsi
-      - sg3_utils # provides `sg_read_attr`
+      - sg3_utils # provides `sg_read_attr` and `sg_rmsn`
     state: latest

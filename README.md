@@ -1,3 +1,4 @@
+ansible-playbook playbook.yaml --become-password-file sudo.txt
 ansible-playbook playbook.yaml --ask-become-pass
 ansible-playbook playbook.yaml --ask-pass --ask-become-pass
 

@@ -19,7 +19,7 @@
 
 - name: Check HPE LTT already downloaded
   stat:
-    path: "hpe_ltt65_linux_x86_64.tar"
+    path: "{{ansible_env.HOME}}/hpe_ltt65_linux_x86_64.tar"
   register: hpe_ltt_downloaded
 
 # https://support.hpe.com/connect/s/softwaredetails?language=en_US&collectionId=MTX-6d5d29b8407d4250
@@ -33,5 +33,31 @@
 - name: Download HPE LTT v6.5
   ansible.builtin.uri:
     url: https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v241790/hpe_ltt65_linux_x86_64.tar
-    dest: "hpe_ltt65_linux_x86_64.tar"
-    when: not hpe_ltt_downloaded.stat.exists
+    dest: "{{ansible_env.HOME}}/hpe_ltt65_linux_x86_64.tar"
+  when: not hpe_ltt_downloaded.stat.exists
+
+- name: Untar HPE LTT v6.5
+  ansible.builtin.unarchive:
+    src: "{{ansible_env.HOME}}/hpe_ltt65_linux_x86_64.tar"
+    dest: "{{ansible_env.HOME}}"
+    remote_src: yes
+
+# TODO verify signature
+
+- name: Install HPE LTT v6.5 from downloaded package
+  ansible.builtin.dnf:
+     name: "{{ansible_env.HOME}}/hpeltt-6.5.0.10-4.x86_64.rpm"
+     state: present
+     disable_gpg_check: true
+
+- name: Create a compatibility symlink for /usr/lib64/libtinfo.so.5
+  ansible.builtin.file:
+    src: /usr/lib64/libtinfo.so.6
+    dest: /usr/lib64/libtinfo.so.5
+    state: link
+
+- name: Create a compatibility symlink for /usr/lib64/libncurses.so.5
+  ansible.builtin.file:
+    src: /usr/lib64/libncurses.so.6
+    dest: /usr/lib64/libncurses.so.5
+    state: link
