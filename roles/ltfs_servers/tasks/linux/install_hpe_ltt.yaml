@@ -1,0 +1,37 @@
+---
+- name: Install packages to support HPE LTT
+  ansible.builtin.package:
+    name:
+      - ncurses-base
+      - ncurses-c++-libs
+      - ncurses-libs
+      - ncurses-compat-libs
+      - ncurses-static
+      - ncurses-devel
+      - ncurses-term
+    state: latest
+# todo make symlinks
+# `ln -s /usr/lib64/libtinfo.so.6 /usr/lib64/libtinfo.so.5`
+
+# `ln -s /usr/lib64/libncurses.so.6 /usr/lib64/libncurses.so.5`
+
+# todo download HPE LTT rpm and install
+
+- name: Check HPE LTT already downloaded
+  stat:
+    path: "hpe_ltt65_linux_x86_64.tar"
+  register: hpe_ltt_downloaded
+
+# https://support.hpe.com/connect/s/softwaredetails?language=en_US&collectionId=MTX-6d5d29b8407d4250
+# curl -fL -o "hpe_ltt65_linux_x86_64.tar"
+# https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v241790/hpe_ltt65_linux_x86_64.tar
+
+- name: HPE LTT v6.5 Already Downloaded
+  debug:
+    msg: "HPE LTT v6.5 has already bee downloaded"
+  when: hpe_ltt_downloaded.stat.exists
+- name: Download HPE LTT v6.5
+  ansible.builtin.uri:
+    url: https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v241790/hpe_ltt65_linux_x86_64.tar
+    dest: "hpe_ltt65_linux_x86_64.tar"
+    when: not hpe_ltt_downloaded.stat.exists

@@ -1,0 +1,17 @@
+---
+- name: Install packages to Linux LTFS
+  ansible.builtin.package:
+    name:
+      - icu
+      - fuse-devel
+      - libxml2-devel
+      - libuuid-devel
+      - net-snmp-devel
+      - automake
+      - libtool
+      - autoconf
+    state: latest
+
+# TODO clone repo and build
+# TODO make mount/unmount shell scripts
+# TODO add to mtab or fstab?

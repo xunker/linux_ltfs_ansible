@@ -1,0 +1,9 @@
+---
+- name: Install useful packages
+  ansible.builtin.package:
+    name:
+      - mt-st
+      - mtx # tape library control
+      - lsscsi
+      - sg3_utils # provides `sg_read_attr`
+    state: latest

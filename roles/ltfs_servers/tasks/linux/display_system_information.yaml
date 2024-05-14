@@ -1,0 +1,7 @@
+---
+- name: display user info
+  ansible.builtin.command: whoami
+- name: display system information
+  debug:
+    msg: "The hostname is '{{ ansible_facts['hostname'] }}' and the OS is '{{
+    ansible_facts['lsb'] }}'"
