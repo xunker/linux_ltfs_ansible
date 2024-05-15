@@ -25,3 +25,19 @@
 #  [5:0:0:0]    tape    HP       Ultrium 5-SCSI   I5BS  /dev/st0   /dev/sg2
 # $ lsscsi -g | grep tape | tr ' ' "\n" | grep 'dev/sg'
 #  /dev/sg2
+#
+# ..or parsing:
+# $ ltfs -o device_list
+#  39ce LTFS14000I LTFS starting, LTFS version 2.5.0.0 (Prelim), log level 2.
+#  39ce LTFS14058I LTFS Format Specification version 2.4.0.
+#  39ce LTFS14104I Launched by "ltfs -o device_list".
+#  39ce LTFS14105I This binary is built for Linux (x86_64).
+#  39ce LTFS14106I GCC version is 14.1.1 20240507 (Red Hat 14.1.1-1).
+#  39ce LTFS17087I Kernel version: Linux version 6.8.9-300.fc40.x86_64 (mockbuild@5f5c14101bdf4cb8942130379360ff7d) (gcc (GCC) 14.#  0.1 20240411 (Red Hat 14.0.1-0), GNU ld version 2.41-34.fc40) #1 SMP PREEMPT_DYNAMIC Thu May  2 18:59:06 UTC 2024 i386.
+#  39ce LTFS17089I Distribution: Fedora release 40 (Forty).
+#  39ce LTFS17089I Distribution: NAME="Fedora Linux".
+#  39ce LTFS17089I Distribution: Fedora release 40 (Forty).
+#  39ce LTFS17089I Distribution: Fedora release 40 (Forty).
+#  39ce LTFS17085I Plugin: Loading "sg" tape backend.
+#  Tape Device list:.
+#  Device Name = /dev/sg2 (5.0.0.0), Vendor ID = HP      , Product ID = Ultrium 5-SCSI  , Serial Number = HU1320VR1T, Product Name =[Ultrium 5-SCSI].
