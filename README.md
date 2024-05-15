@@ -12,3 +12,6 @@ StrictHostKeyChecking=no' -i inventory.yaml playbook.yaml")
 
 disable suspend at login screen
 https://unix.stackexchange.com/questions/361214/disable-gdm-suspend-on-lock-screen
+
+use config file
+https://github.com/LinearTapeFileSystem/ltfs/blob/master/docs/ltfs.conf.example
