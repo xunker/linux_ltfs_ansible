@@ -1,0 +1,22 @@
+---
+# TODO: don't copy if bashx already present
+- name: Copy BashX tarball
+  copy:
+    src: files/bashx_v3.1.2.tar.gz
+    dest: "{{ansible_env.HOME}}/"
+
+- name: Extract BashX to /root/.bashx
+  ansible.builtin.command:
+    argv:
+      - tar
+      - -zxf
+      - "{{ansible_env.HOME}}/bashx_v3.1.2.tar.gz"
+      - --directory
+      - "{{ansible_env.HOME}}/.bashx/v3.1.2"
+
+- name: Copy LTFS Watcher to ltfs-tape-watcher
+  copy:
+    src: files/ltfs-tape-watcher/
+    dest: "{{ansible_env.HOME}}/ltfs-tape-watcher/"
+
+# TODO: add ltfs watcher to systemd and start it on boot

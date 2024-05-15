@@ -8,6 +8,10 @@ ansible-playbook playbook.yaml --extra-vars "configure_rtc=true configure_sdio=t
 (was "ansible-playbook --ssh-common-args '-o UserKnownHostsFile=/dev/null -o
 StrictHostKeyChecking=no' -i inventory.yaml playbook.yaml")
 
+# Credit
+
+https://github.com/reduardo7/bash-service-manager and https://github.com/reduardo7/bashx
+
 # TODO
 
 disable suspend at login screen
