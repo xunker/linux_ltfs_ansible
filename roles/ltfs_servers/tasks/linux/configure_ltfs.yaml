@@ -1,0 +1,27 @@
+---
+- name: Create LTFS Mount Point
+  ansible.builtin.file:
+    path: "{{ltfs_mount_point}}"
+    state: directory
+    mode: '0777'
+
+- name: Copy scripts
+  template:
+    src: '{{ item.src }}'
+    dest: '~/{{ item.path }}'
+  with_filetree: '../files/scripts'
+  when: item.state == 'file'
+
+- name: Copy bash config for default tape device paths
+  ansible.builtin.template:
+    src: files/ltfs_device_variables.sh
+    dest: "/etc/profile.d/ltfs_device_variables.sh"
+    mode: 0755
+
+# TODO: find SG device automatically by parsing
+#  $ lsscsi -g
+#  [0:0:0:0]    disk    ATA      KINGSTON SNS4151 01.6  /dev/sda   /dev/sg0
+#  [1:0:0:0]    cd/dvd  hp       DVDRAM GTB0N     HCS1  /dev/sr0   /dev/sg1
+#  [5:0:0:0]    tape    HP       Ultrium 5-SCSI   I5BS  /dev/st0   /dev/sg2
+# $ lsscsi -g | grep tape | tr ' ' "\n" | grep 'dev/sg'
+#  /dev/sg2
