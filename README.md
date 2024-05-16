@@ -14,8 +14,14 @@ https://github.com/reduardo7/bash-service-manager and https://github.com/reduard
 
 # TODO
 
+add .keep file to /mnt/ltfs when created
+
 disable suspend at login screen
 https://unix.stackexchange.com/questions/361214/disable-gdm-suspend-on-lock-screen
 
 use config file
 https://github.com/LinearTapeFileSystem/ltfs/blob/master/docs/ltfs.conf.example
+
+Check that target is Fedora/Redhat/yum/dnf before even trying to run
+
+Allow for installation on non-redhat/non-yum/non-dnf distros
