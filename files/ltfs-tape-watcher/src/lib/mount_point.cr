@@ -16,6 +16,10 @@ module LtfsTapeWatcher
       Dir.exists?(path)
     end
 
+    def mounted?
+      false
+    end
+
     def to_s
       "Mount Point: #{path}"
     end

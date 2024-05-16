@@ -24,26 +24,26 @@ module LtfsTapeWatcher
 
     def process
       if @mount_point.mounted?
-        Log.info { "#{@mount_point} is occupied" }
+        Log.info { "#{@mount_point.to_s} is occupied" }
         return
       end
 
       if @tape_device.mounted?
-        Log.info { "#{@tape_device} is already mounted at #{@tape_device.mount_point}" }
+        Log.info { "#{@tape_device.to_s} is already mounted at #{@tape_device.mount_point}" }
         return
       end
 
       unless @tape_device.ready?
-        Log.info { "#{@tape_device} is not yet ready" }
+        Log.info { "#{@tape_device.to_s} is not yet ready" }
         return
       end
 
       unless @tape_device.tape_present?
-        Log.info { "No tape present in #{@tape_device}" }
+        Log.info { "No tape present in #{@tape_device.to_s}" }
         return
       end
 
-      Log.info { "Current tape: #{tape_device.tape_info}" }
+      Log.info { "Current tape: #{@tape_device.tape_info}" }
 
       unless @tape_device.tape_is_ltfs?
         Log.info { "Current tape is not formatted as LTFS" }
