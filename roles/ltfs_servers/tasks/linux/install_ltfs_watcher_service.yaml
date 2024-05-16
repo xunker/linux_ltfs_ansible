@@ -19,4 +19,15 @@
     src: files/ltfs-tape-watcher/
     dest: "{{ansible_env.HOME}}/ltfs-tape-watcher/"
 
+# TODO: skip if already installed
+- name: Download Crystal-Lang installer
+  ansible.builtin.command:
+    cmd: "wget -o install_crystal.sh https://crystal-lang.org/install.sh"
+    creates: "{{ansible_env.HOME}}/install_crystal.sh"
+
+- name: Install Crystal-Lang for building Watcher
+  ansible.builtin.command:
+    cmd: "{{ansible_env.HOME}}/install_crystal.sh"
+    creates: /usr/bin/crystal
+
 # TODO: add ltfs watcher to systemd and start it on boot
