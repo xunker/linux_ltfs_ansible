@@ -1,5 +1,4 @@
 ---
-# TODO: skip all of these if already installed
 - name: Install packages to Linux LTFS
   ansible.builtin.package:
     name:
@@ -12,7 +11,7 @@
       - automake
       - libtool
       - autoconf
-      - python3-pyxattr # for ltfsee_ordered_copy
+      - python3-pyxattr # for ltfs_ordered_copy
     state: latest
 
 - name: Clone github.com/LinearTapeFileSystem/ltfs
@@ -32,14 +31,7 @@
   ansible.builtin.command:
     argv:
       - ./configure
-    creates:
-      - "{{ansible_env.HOME}}/ltfs/config.h"
-      - "{{ansible_env.HOME}}/ltfs/config.log"
-      - "{{ansible_env.HOME}}/ltfs/config.status"
-      - "{{ansible_env.HOME}}/ltfs/libtool"
-      - "{{ansible_env.HOME}}/ltfs/ltfs.pc"
-      - "{{ansible_env.HOME}}/ltfs/Makefile"
-      - "{{ansible_env.HOME}}/ltfs/stamp-h1"
+    creates: "{{ansible_env.HOME}}/ltfs/Makefile"
     chdir: "{{ansible_env.HOME}}/ltfs"
 
 # https://github.com/LinearTapeFileSystem/ltfs/issues/394#issuecomment-2082624342
@@ -53,6 +45,7 @@
     argv:
       - make
     chdir: "{{ansible_env.HOME}}/ltfs"
+    creates: "{{ansible_env.HOME}}/ltfs/src/ltfs"
 
 - name: make install
   ansible.builtin.command:
@@ -60,3 +53,4 @@
       - make
       - install
     chdir: "{{ansible_env.HOME}}/ltfs"
+    creates: /usr/local/bin/ltfs

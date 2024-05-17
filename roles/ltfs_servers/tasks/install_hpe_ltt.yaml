@@ -10,12 +10,6 @@
       - ncurses-devel
       - ncurses-term
     state: latest
-# todo make symlinks
-# `ln -s /usr/lib64/libtinfo.so.6 /usr/lib64/libtinfo.so.5`
-
-# `ln -s /usr/lib64/libncurses.so.6 /usr/lib64/libncurses.so.5`
-
-# todo download HPE LTT rpm and install
 
 - name: Check HPE LTT already downloaded
   stat:
@@ -30,6 +24,7 @@
   debug:
     msg: "HPE LTT v6.5 has already bee downloaded"
   when: hpe_ltt_downloaded.stat.exists
+
 - name: Download HPE LTT v6.5
   ansible.builtin.uri:
     url: https://downloads.hpe.com/pub/softlib2/software1/pubsw-generic/p1910951539/v241790/hpe_ltt65_linux_x86_64.tar
@@ -41,6 +36,7 @@
     src: "{{ansible_env.HOME}}/hpe_ltt65_linux_x86_64.tar"
     dest: "{{ansible_env.HOME}}"
     remote_src: yes
+    creates: "{{ansible_env.HOME}}/hpeltt-6.5.0.10-4.x86_64.rpm"
 
 # TODO verify signature
 
