@@ -1,5 +1,10 @@
 ---
-# TODO disable automatic suspend at login screen
-# https://unix.stackexchange.com/questions/361214/disable-gdm-suspend-on-lock-screen
-# https://www.reddit.com/r/Fedora/comments/15i5wcg/comment/k0in4fj/
-# TODO disable automatic suspend while logged in
+# Source: https://unix.stackexchange.com/a/746767
+- name: Copy 01-local-power to disable suspend while at login screen
+  ansible.builtin.template:
+    src: files/etc/dconf/db/gdm.d/01-local-power
+    dest: "/etc/dconf/db/gdm.d/01-local-power"
+
+- name: Rebuild dconf database after file added
+  ansible.builtin.command:
+    cmd: dconf update
