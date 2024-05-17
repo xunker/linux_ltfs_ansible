@@ -6,4 +6,6 @@
       - mtx # tape library control
       - lsscsi
       - sg3_utils # provides `sg_read_attr` and `sg_rmsn`
+      - iotop
+      - sysstat # sar, sadf, mpstat, iostat, tapestat, pidstat, cifsiostat, sa
     state: latest
