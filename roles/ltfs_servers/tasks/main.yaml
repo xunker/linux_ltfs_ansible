@@ -5,5 +5,4 @@
 - import_tasks: linux/install_packages.yaml
 - import_tasks: linux/install_linux_ltfs.yaml
 - import_tasks: linux/configure_ltfs.yaml
-- import_tasks: linux/install_ltfs_watcher_service.yaml
 - import_tasks: linux/install_hpe_ltt.yaml
