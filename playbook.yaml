@@ -7,4 +7,10 @@
     ltfs_mount_point: /mnt/ltfs
 
   tasks:
-    - import_tasks: roles/ltfs_servers/tasks/main.yaml
+    - import_tasks: linux/display_system_information.yaml
+    - import_tasks: linux/disable_suspend.yaml
+    - import_tasks: linux/dnf_yum_update.yaml
+    - import_tasks: linux/install_packages.yaml
+    - import_tasks: linux/install_linux_ltfs.yaml
+    - import_tasks: linux/configure_ltfs.yaml
+    - import_tasks: linux/install_hpe_ltt.yaml
