@@ -5,6 +5,11 @@
     state: directory
     mode: '0777'
 
+- name: add .keep file to mountpoint directory
+  ansible.builtin.command:
+    cmd: "touch {{ltfs_mount_point}}/.keep"
+    creates: "{{ltfs_mount_point}}/.keep"
+
 - name: Copy scripts
   template:
     src: '{{ item.src }}'
