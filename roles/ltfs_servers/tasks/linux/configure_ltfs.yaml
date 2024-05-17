@@ -14,7 +14,7 @@
 
 - name: Copy bash config for default tape device paths
   ansible.builtin.template:
-    src: files/ltfs_device_variables.sh
+    src: files/etc/profile.d/ltfs_device_variables.sh
     dest: "/etc/profile.d/ltfs_device_variables.sh"
     mode: 0755
 
