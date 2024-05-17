@@ -5,8 +5,6 @@
   become_user: root
   vars:
     ltfs_mount_point: /mnt/ltfs
-    sg_device: /dev/sg2
-    st_device: /dev/st0
-    nst_device: /dev/nst0
+
   tasks:
     - import_tasks: roles/ltfs_servers/tasks/main.yaml
