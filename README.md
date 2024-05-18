@@ -74,8 +74,9 @@ It *might* work with Debian-based distros, but HPE LTT will NOT be installed.
    * For Windows and all others, see [Install
      Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
-3. Download or clone this repo to your local machine
-  * `git clone https://github.com/xunker/linux_ltfs_ansible.git`
+3. Get this code to your local machine using either of these:
+  * Download a zip: https://github.com/xunker/linux_ltfs_ansible/archive/refs/heads/main.zip
+  * Clone the repo: `git clone https://github.com/xunker/linux_ltfs_ansible.git`
 
 4. Change any appropriate settings in the "vars:" section of `playbook.yaml`
 
