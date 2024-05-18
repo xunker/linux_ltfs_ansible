@@ -1,5 +1,7 @@
 # LTFS on Linux - Ansible Deployment Script
 
+https://github.com/xunker/linux_ltfs_ansible
+
 This repo automates the building and installation of the [Linux LTFS Reference
 Implementation](https://github.com/LinearTapeFileSystem/ltfs) on to a Linux
 target.
