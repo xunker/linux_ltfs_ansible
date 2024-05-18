@@ -1,7 +1,11 @@
 ---
-- name: display user info
-  ansible.builtin.command: whoami
-- name: display system information
+- name: Hostname
   debug:
-    msg: "The hostname is '{{ ansible_facts['hostname'] }}' and the OS is '{{
-    ansible_facts['lsb'] }}'"
+    msg: Host is '{{ ansible_facts['hostname'] }}'
+- name: OS
+  debug:
+    msg: OS is '{{ansible_facts['distribution']}} {{ansible_facts['distribution_version']}}'
+- name: OS Family
+  debug:
+    msg: "{{ansible_facts['os_family']}} / {{ansible_facts['distribution_file_variety']}}"
+

@@ -112,13 +112,14 @@ of the linux machine (see "ansible_ssh_common_args" in
 ### Verify Environment Variables
 
 First, check that the environment variables are correctly set by running `env |
-grep -e 'DEVICE' -e 'TAPE'`. It should return a list similar this, though the
-paths may vary on your particular machine:
+grep -e 'DEVICE' -e 'TAPE' -e 'LTFS'`. It should return a list similar this,
+though the paths may vary on your particular machine:
 
 ```bash
 SG_DEVICE=/dev/sg4
 NST_DEVICE=/dev/nst0
 ST_DEVICE=/dev/st0
+LTFS_MOUNT=/mnt/ltfs
 TAPE=/dev/nst0
 ```
 If you do not see at least those four lines, then something might be wrong with
