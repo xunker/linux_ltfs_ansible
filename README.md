@@ -98,9 +98,9 @@ If you're running this often and don't want to type in a sudo password every
 time, create a file named `sudo.txt` and put the sudo password in that, then add
 `--become-password-file sudo.txt` to your Ansible command above.
 
-**IMPORTANT** _Never_ commit sudo.txt to your repo, ever.
+Rememeber: _never_ commit sudo.txt to your repo, ever.
 
-### Important notice about SSH know_hosts
+### Notice about SSH known_hosts
 
 By default, this Ansible script will neither check nor record the SSH host keys
 of the linux machine (see "ansible_ssh_common_args" in
