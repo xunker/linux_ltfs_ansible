@@ -92,7 +92,7 @@ It *might* work with Debian-based distros, but HPE LTT will NOT be installed.
     * If you log in with an SSH public key, omit `--ask-pass`
     * If your user has sudo access without a password, omit `--ask-become-pass`
 
-### Skipping the sudo password prompt
+#### Skipping the sudo password prompt
 
 If you're running this often and don't want to type in a sudo password every
 time, create a file named `sudo.txt` and put the sudo password in that, then add
@@ -100,7 +100,7 @@ time, create a file named `sudo.txt` and put the sudo password in that, then add
 
 Rememeber: _never_ commit sudo.txt to your repo, ever.
 
-### Notice about SSH known_hosts
+#### Notice about SSH known_hosts
 
 By default, this Ansible script will neither check nor record the SSH host keys
 of the linux machine (see "ansible_ssh_common_args" in
