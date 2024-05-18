@@ -5,6 +5,15 @@ Implementation](https://github.com/LinearTapeFileSystem/ltfs) on to a Linux
 target, set helpful environment variables, and installs useful utilities like HP
 Library and Tape Tools (HPE LTT).
 
+- [Supported Target Linux Distros](#supported-target-linux-distros)
+- [What it'll do](#what-itll-do)
+- [Running the script](#running-the-script)
+- [Using LTFS once install script completes](#using-ltfs-once-install-script-completes)
+- [Caveats](#caveats)
+- [Who?](#who)
+- [TODO](#todo)
+- [Thanks](#thanks)
+
 ## Supported Target Linux Distros
 
 Currently working and tested with __Fedora 40 *workstation*__ -- it might work
@@ -190,7 +199,7 @@ You can also verify that your tape drives are being detected in linux by running
 Likewise, this script will __not__ configure your iSCSI, FCoE, FCIP, or iFCP
 connection for you. How to do that is left as an exercise for the reader.
 
-## Who
+## Who?
 
 [xunker](https://github.com/xunker) made this by standing on the shoulders of
 [many other hard-working people](#thanks).
