@@ -7,10 +7,10 @@
     ltfs_mount_point: /mnt/ltfs
 
   tasks:
-    # - import_tasks: roles/ltfs_servers/tasks/display_system_information.yaml
-    # - import_tasks: roles/ltfs_servers/tasks/disable_suspend.yaml
-    # - import_tasks: roles/ltfs_servers/tasks/dnf_yum_update.yaml
-    # - import_tasks: roles/ltfs_servers/tasks/install_packages.yaml
+    - import_tasks: roles/ltfs_servers/tasks/display_system_information.yaml
+    - import_tasks: roles/ltfs_servers/tasks/disable_suspend.yaml
+    - import_tasks: roles/ltfs_servers/tasks/update_installed_packages.yaml
+    - import_tasks: roles/ltfs_servers/tasks/install_packages.yaml
     - import_tasks: roles/ltfs_servers/tasks/install_linux_ltfs.yaml
-    # - import_tasks: roles/ltfs_servers/tasks/configure_ltfs.yaml
-    # - import_tasks: roles/ltfs_servers/tasks/install_hpe_ltt.yaml
+    - import_tasks: roles/ltfs_servers/tasks/configure_ltfs.yaml
+    - import_tasks: roles/ltfs_servers/tasks/install_hpe_ltt.yaml

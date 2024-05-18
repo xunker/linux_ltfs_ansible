@@ -1,0 +1,27 @@
+---
+# https://stackoverflow.com/a/70650223
+- name: Update package cache
+  ansible.builtin.package:
+    update_cache: true
+
+# Previously:
+#
+# - name: update yum cache
+#   ansible.builtin.yum:
+#     update_cache: yes
+#   when: ansible_pkg_mgr == "yum"
+
+# - name: update apk cache
+#   community.general.apk:
+#     update_cache: yes
+#   when: ansible_pkg_mgr == "apk"
+
+# - name: update dnf cache
+#   ansible.builtin.dnf:
+#     update_cache: yes
+#   when: ansible_pkg_mgr == "dnf"
+
+# - name: update apt cache
+#   ansible.builtin.apt:
+#     update_cache: yes
+#   when: ansible_pkg_mgr == "apt"
