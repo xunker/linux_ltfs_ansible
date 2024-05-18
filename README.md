@@ -30,7 +30,7 @@ It *might* work with Debian-based distros, but HPE LTT will NOT be installed.
 * Add profile.d script to automatically detect the tape device names and place
   them in environment variables
   - `$ST_DEVICE` : auto-rewind mt device (ex: `/dev/st0`)
-  - `$NST_DEVICE` : no-rewind mt device (ex: `/dev/sst0`)
+  - `$NST_DEVICE` : no-rewind mt device (ex: `/dev/nst0`)
   - `$TAPE` : default device that mt will use, set to _$NST_DEVICE_
   - `$SG_DEVICE` : the SCSI Generic (sg) device path (ex: `/dev/sg2`)
 
