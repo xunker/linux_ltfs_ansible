@@ -1,13 +1,9 @@
 # LTFS on Linux - Ansible Deployment Script
 
-https://github.com/xunker/linux_ltfs_ansible
-
-This repo automates the building and installation of the [Linux LTFS Reference
+This repo automates the installation of [Linux LTFS Reference
 Implementation](https://github.com/LinearTapeFileSystem/ltfs) on to a Linux
-target.
-
-It automates downloading, building, and installing of the LTFS drivers, along
-with all dependencies and helpful utilities (such as HP Library and Tape Tools).
+target, set helpful environment variables, and installs useful utilities like HP
+Library and Tape Tools (HPE LTT).
 
 ## Supported Target Linux Distros
 
@@ -27,18 +23,19 @@ It *might* work with Debian-based distros, but HPE LTT will NOT be installed.
     patch](https://github.com/LinearTapeFileSystem/ltfs/issues/394#issuecomment-2082624342)
     necessary for building on recent Linuxes
 
-* Add profile.d script to automatically detect the tape device names and place
-  them in environment variables
+* Adds [profile.d script](files/etc/profile.d/ltfs_device_variables.sh) to
+  automatically detect the tape device names and place them in environment
+  variables
   - `$ST_DEVICE` : auto-rewind mt device (ex: `/dev/st0`)
   - `$NST_DEVICE` : no-rewind mt device (ex: `/dev/nst0`)
   - `$TAPE` : default device that mt will use, set to _$NST_DEVICE_
   - `$SG_DEVICE` : the SCSI Generic (sg) device path (ex: `/dev/sg2`)
 
-* Creates mount-point (default, `/mnt/ltfs`)
+* Creates mount-point (default `/mnt/ltfs`)
 
 * Adds scripts to automate mounting and un-mounting of LTFS tapes
-  - `mount_ltfs.sh`
-  - `unmount_eject_ltfs.sh`
+  - [mount_ltfs.sh](files/scripts/mount_ltfs.sh)
+  - [unmount_eject_ltfs.sh](files/scripts/unmount_eject_ltfs.sh)
 
 * Installs packages useful or essential for tape drive work
   - `mt-st` : provides the essential 'mt' command
@@ -57,7 +54,7 @@ It *might* work with Debian-based distros, but HPE LTT will NOT be installed.
 ## Running the script
 
 1. Stand up a basic Linux box using the appropriate distro
-    * Enable SSH is enabled and ensure you can log in as your preferred user
+    * Ensure that SSH is enabled and that you can log in as your preferred user
     * Ensure preferred user has `sudo` privileges
 
 2. Install Ansible on your _local_ machine (i.e. *not* the linux box you just
@@ -69,6 +66,7 @@ It *might* work with Debian-based distros, but HPE LTT will NOT be installed.
      Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 3. Download or clone this repo to your local machine
+  * `git clone https://github.com/xunker/linux_ltfs_ansible.git`
 
 4. Change any appropriate settings in the "vars:" section of `playbook.yaml`
 
@@ -191,6 +189,11 @@ You can also verify that your tape drives are being detected in linux by running
 
 Likewise, this script will __not__ configure your iSCSI, FCoE, FCIP, or iFCP
 connection for you. How to do that is left as an exercise for the reader.
+
+## Who
+
+[xunker](https://github.com/xunker) made this by standing on the shoulders of
+[many other hard-working people](#thanks).
 
 ## TODO
 
