@@ -1,3 +1,4 @@
+export LTFS_MOUNT="{{ltfs_mount_point}}"
 
 LSSCSI_TAPE=$(lsscsi -g | grep tape )
 export ST_DEVICE=$(echo $LSSCSI_TAPE | tr ' ' "\n" | grep 'dev/st')
