@@ -1,6 +1,0 @@
-ltfs_servers:
-  hosts:
-    fedora:
-      ansible_host: fedora.local
-  vars:
-    ansible_ssh_common_args: '-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
