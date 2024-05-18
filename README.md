@@ -17,8 +17,7 @@ for the *server* version too, but I had too many DNS problems to test with it.
 It will *probably* work with OpenSuSE Leap/Tumbleweed 15.5, and other
 Redhat-related distros.
 
-It *might* work with Debian-based distros, but HPE LTT will NOT be
-installed.
+It *might* work with Debian-based distros, but HPE LTT will NOT be installed.
 
 ## What it'll do
 
@@ -66,7 +65,8 @@ installed.
    * For MacOS, homebrew is recommended: `brew install ansible`
    * For Linux, [see specific
      instructions](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html)
-   * For Windows and all others, see [Install Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+   * For Windows and all others, see [Install
+     Guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 3. Download or clone this repo to your local machine
 
@@ -194,8 +194,8 @@ connection for you. How to do that is left as an exercise for the reader.
 
 ## TODO
 
-* Check that target is RPM-based (Fedora/Redhat) before even trying to run and skip
-  hpe_ltt install if it is not
+* Check that target is RPM-based (Fedora/Redhat) before even trying to run and
+  skip hpe_ltt install if it is not
 
 * Test on on non-redhat/non-yum/non-dnf distros
 
@@ -207,8 +207,14 @@ connection for you. How to do that is left as an exercise for the reader.
 
 The [Linux LTFS Team](https://github.com/LinearTapeFileSystem)
 
+Github user [TulioLazarini](https://github.com/TulioLazarini) for making [the
+patch that is
+required](https://github.com/LinearTapeFileSystem/ltfs/issues/394#issuecomment-2082624342)
+to build LTFS on recent linux systems.
+
 Stack Overflow user [vk5tu](https://unix.stackexchange.com/users/100569/vk5tu)
-for config to [disable suspend mode on the GDM login page](https://unix.stackexchange.com/a/746767)
+for config to [disable suspend mode on the GDM login
+page](https://unix.stackexchange.com/a/746767)
 
 Stack Overflow user [Philipp
 Waller](https://stackoverflow.com/users/1872827/philipp-waller) for info on
