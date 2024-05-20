@@ -13,7 +13,7 @@
 - name: Copy scripts
   template:
     src: '{{ item.src }}'
-    dest: '~/{{ item.path }}'
+    dest: '{{ltfs_scripts_location}}/{{ item.path }}'
   with_filetree: '../files/scripts'
   when: item.state == 'file'
 

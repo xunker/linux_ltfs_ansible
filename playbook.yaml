@@ -4,8 +4,17 @@
   become: true
   become_user: root
   vars:
+    # This directory will be created and used by mount_ltfs.sh as the a mount
+    # point for LTFS tapes.
     ltfs_mount_point: /mnt/ltfs
 
+    # This is the location where the files in files/scripts will be copied to,
+    # and it will be added to the default shell path if it's not already there
+    # (done in ltfs_device_variables.sh).
+    ltfs_scripts_location: /usr/local/bin/
+
+  # "tasks:" is the tasks that will be run on the server hosts. If you want to
+  # skip one of these tasks, simply comment it out and it will be ignored
   tasks:
     - import_tasks: roles/ltfs_servers/tasks/display_system_information.yaml
     - import_tasks: roles/ltfs_servers/tasks/disable_suspend.yaml

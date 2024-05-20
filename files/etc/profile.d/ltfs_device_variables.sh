@@ -1,3 +1,11 @@
+PATH="$PATH:{{ltfs_scripts_location}}" # mount_ltfs.sh and unmount_eject_ltfs.sh
+
+# Add ltfs_scripts_location to PATH only if it's not already there.
+# Source: https://superuser.com/a/39995
+if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="${PATH:+"$PATH:"}$1"
+fi
+
 export LTFS_MOUNT="{{ltfs_mount_point}}"
 
 LSSCSI_TAPE=$(lsscsi -g | grep tape )

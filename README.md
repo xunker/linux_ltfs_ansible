@@ -213,25 +213,23 @@ connection for you. How to do that is left as an exercise for the reader.
 
 * Test on on non-redhat/non-yum/non-dnf distros
 
-* Copy scripts in roles/ltfs_servers/tasks/configure_ltfs.yaml to a neutral
-  place, like `/usr/local/bin/` where the ltfs binaries live, and add that to
-  the default shell path
-
 ## Thanks
 
 The [Linux LTFS Team](https://github.com/LinearTapeFileSystem)
 
-Github user [TulioLazarini](https://github.com/TulioLazarini) for making [the
-patch that is
+[TulioLazarini](https://github.com/TulioLazarini) for making [the patch that is
 required](https://github.com/LinearTapeFileSystem/ltfs/issues/394#issuecomment-2082624342)
-to build LTFS on recent linux systems.
+to build LTFS on recent linux systems
 
-Stack Overflow user [vk5tu](https://unix.stackexchange.com/users/100569/vk5tu)
+[vk5tu](https://unix.stackexchange.com/users/100569/vk5tu)
 for config to [disable suspend mode on the GDM login
 page](https://unix.stackexchange.com/a/746767)
 
-Stack Overflow user [Philipp
-Waller](https://stackoverflow.com/users/1872827/philipp-waller) for info on
-[package managers in Ansible](https://stackoverflow.com/a/70650223)
+[Philipp Waller](https://stackoverflow.com/users/1872827/philipp-waller) for
+info on [package managers in Ansible](https://stackoverflow.com/a/70650223)
+
+[Gordon Davisson](https://superuser.com/users/7778/gordon-davisson) for the
+[append-to-path snippet](https://superuser.com/a/39995) in
+ltfs_device_variables.sh
 
 [DataHoarder](https://reddit.com/r/datahoarder) subreddit
