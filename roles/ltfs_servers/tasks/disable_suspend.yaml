@@ -1,10 +1,19 @@
 ---
-# Source: https://unix.stackexchange.com/a/746767
-- name: Copy 01-local-power to disable suspend while at login screen
-  ansible.builtin.template:
-    src: files/etc/dconf/db/gdm.d/01-local-power
-    dest: "/etc/dconf/db/gdm.d/01-local-power"
+- name: Check if /etc/dconf/db/gdm.d exists
+  stat:
+    path: "/etc/dconf/db/gdm.d"
+  register: etc_dconf_db_gdm_d
 
-- name: Rebuild dconf database after file added
-  ansible.builtin.command:
-    cmd: dconf update
+# Only try to copy 01-local-power if the target directory exixts
+- name: check if suspend can be disabled
+  when: etc_dconf_db_gdm_d.stat.exists
+  block:
+    # Source: https://unix.stackexchange.com/a/746767
+    - name: Copy 01-local-power to disable suspend while at login screen
+      ansible.builtin.template:
+        src: files/etc/dconf/db/gdm.d/01-local-power
+        dest: "/etc/dconf/db/gdm.d/01-local-power"
+
+    - name: Rebuild dconf database after file added
+      ansible.builtin.command:
+        cmd: dconf update

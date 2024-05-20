@@ -59,6 +59,7 @@ It *might* work with Debian-based distros, but HPE LTT will NOT be installed.
 
 * Downloads and installs HP Library and Tape Tools (`hpe_ltt`)
   - creates necessary compatibility symlinks, too
+  - only runs on DNF/YUM distros like Redhat/Fedora, Centos, OpenSuSE, etc
 
 ## Running the script
 
@@ -142,7 +143,7 @@ $ mkltfs -d $SG_DEVICE
 
 ### Mount an LTFS tape
 
-There is an included script to make mounting LTFS tapes easier: `mount_ltfs.sh`.
+There is an included script to make mounting LTFS tapes easier: [`mount_ltfs.sh`](files/scripts/mount_ltfs.sh).
 
 Run that command as root (or sudo) and it will mount the LTFS tape in the
 "ltfs_mount_point" in playbook.yaml (default "/mnt/ltfs").
@@ -178,9 +179,9 @@ LTFS is still a *tape*, so there is no automounting[^1].
 
 ### Multiple tape drives
 
-All the convenience scripts and added environment variables assume there is only
-one tape drive on your system. LTFS will still build and install with multiple
-drives present, but the convenience scripts will probably not work.
+All the added environment variables assume there is only one tape drive on your
+system. LTFS will still build and install with multiple drives present, but the
+environment variables may be set incorrectly.
 
 ### FC/SAS HBA configuration
 
@@ -207,9 +208,6 @@ connection for you. How to do that is left as an exercise for the reader.
 [many other hard-working people](#thanks).
 
 ## TODO
-
-* Check that target is RPM-based (Fedora/Redhat) before even trying to run and
-  skip hpe_ltt install if it is not
 
 * Test on on non-redhat/non-yum/non-dnf distros
 

@@ -22,4 +22,7 @@
     - import_tasks: roles/ltfs_servers/tasks/install_packages.yaml
     - import_tasks: roles/ltfs_servers/tasks/install_linux_ltfs.yaml
     - import_tasks: roles/ltfs_servers/tasks/configure_ltfs.yaml
-    - import_tasks: roles/ltfs_servers/tasks/install_hpe_ltt.yaml
+
+    - name: Install hpe_ltt on Redhat-based systems
+      ansible.builtin.import_tasks: roles/ltfs_servers/tasks/install_hpe_ltt.yaml
+      when: ansible_pkg_mgr == "dnf"
