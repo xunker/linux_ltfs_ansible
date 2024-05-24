@@ -137,8 +137,14 @@ If you do not already have a tape in LTFS format, insert it in to the drive and
 run as root (or sudo):
 
 ```bash
-$ mkltfs -d $SG_DEVICE
-# if the tape has already been formatted as LTFS before and you want to reformat, you may need to add the --force option
+# First get the current barcode of the tape, because mklts will erase it
+$ BARCODE=$(sg_read_attr $SG_DEVICE | grep Barcode | awk '{ print $2}')
+
+# Do the actual formatting. We truncate Barcode because mkltfs only allows it to be 6 characters long
+$ mkltfs -d $SG_DEVICE -s $(echo $BARCODE | cut -n1-6)
+
+# This last step is optional, and sets the Barcode in the tape attributes back to the original value if original was longer than 6 characters
+$ sg_write_attr $SG_DEVICE 0x806=$BARCODE
 ```
 
 ### Mount an LTFS tape
