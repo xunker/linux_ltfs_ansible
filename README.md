@@ -210,6 +210,7 @@ connection for you. How to do that is left as an exercise for the reader.
 ## TODO
 
 * Test on on non-redhat/non-yum/non-dnf distros
+* Anything that calls `sg_read_attr` (or any sg3-utils command) will need to run *twice* before giving up. That's because with in a newly-inserted tape the first call can still return `Read attribute command: Unit attention` `sg_read_attr failed: Unit attention` on the first call but succeed on the second
 
 ## Thanks
 
